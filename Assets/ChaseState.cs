@@ -19,7 +19,7 @@ public class ChaseState : BearStateBase
         if (player != null)
             controlled.chaseTarget = player;
         else
-            ToAlert();
+            controlled.MakeTransition(BearState.Attack);
     }
 
     private void Chase()
@@ -28,7 +28,7 @@ public class ChaseState : BearStateBase
 
         if (IsCloseEnough())
         {
-            ToAlert();
+            controlled.MakeTransition(BearState.Attack);
         }
 
     }
