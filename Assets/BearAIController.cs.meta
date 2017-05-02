@@ -1,10 +1,16 @@
 fileFormatVersion: 2
 guid: fdb5b17a40292e1409c7ae84cb4999d7
-timeCreated: 1493658083
+timeCreated: 1493741171
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - eyes: {instanceID: 0}
+  - navMeshAgent: {instanceID: 0}
+  - chaseTarget: {instanceID: 0}
+  - shotSpawn: {fileID: 4151275793667878, guid: e2fcb967531b9274aacd1d5d362d4de5,
+      type: 2}
+  - bullet: {fileID: 54498713918908514, guid: 14ede34f266834844a1eb9304856331d, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

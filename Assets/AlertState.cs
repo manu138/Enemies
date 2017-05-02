@@ -3,46 +3,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AlertState : BearStateBase 
+public class AlertState : BearStateBase
 {
-	private float searchTimer;
+    private float searchTimer;
 
-	public AlertState (BearAIController controlled): base (controlled)
-	{
-	}
+    public AlertState(BearAIController controlled) : base(controlled)
+    {
+    }
 
     public override void UpdateState()
     {
-        Search ();
-		LookAround ();
+        Search();
+        LookAround();
     }
 
-	private void Search ()
+    private void Search()
     {
-        Transform player = LookForPlayer ();
+        Transform player = LookForPlayer();
         if (player != null)
-            ToChase (player);
+            ToChase(player);
     }
 
-    private void ToChase (Transform player)
+    private void ToChase(Transform player)
     {
         controlled.chaseTarget = player;
-        controlled.MakeTransition (BearState.Chase);  
+        controlled.MakeTransition(BearState.Chase);
     }
 
-	private void LookAround ()
-	{
-		controlled.navMeshAgent.Stop ();
-        controlled.transform.Rotate (0, controlled.searchingTurnSpeed * Time.deltaTime, 0);
-        searchTimer += Time.deltaTime;
+    private void LookAround()
+    {
+        ToAttackState();
+    }
 
-        if (searchTimer >= controlled.searchingDuration)
-            ToPatrolState ();
-	}
-
-	private void ToPatrolState ()
-	{
-		searchTimer = 0f;
-		controlled.MakeTransition (BearState.Patrol);
-	}
+    private void ToPatrolState()
+    {
+        searchTimer = 0f;
+        controlled.MakeTransition(BearState.Patrol);
+    }
+    private void ToAttackState()
+    {
+        controlled.MakeTransition(BearState.Attack);
+    }
 }

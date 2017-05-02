@@ -6,6 +6,7 @@ using UnityEngine;
 public class AttackState : BearStateBase
 
 {
+
     public AttackState(BearAIController controlled) : base(controlled)
     {
     }
@@ -13,11 +14,20 @@ public class AttackState : BearStateBase
     public override void UpdateState()
     {
         AttackEmily();
+        ToPatrol();
     }
 
     private void AttackEmily()
     {
-        Debug.Log("atacar");
+        controlled.Disparar();
+
+
         controlled.MakeTransition(BearState.Alert);
     }
+    private void ToPatrol()
+    {
+        controlled.MakeTransition(BearState.Patrol);
+    }
+
 }
+
